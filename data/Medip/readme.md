@@ -34,3 +34,16 @@ bedtools intersect -a 2019053102_T2_20190709N_TGGAACAA_S102_L003.sorted.macs_pea
 bedtools intersect -a 2019053102_T3_20190709N_TGGCTTCA_S103_L003.sorted.macs_peaks.narrowPeak -b 2019053102_N_20190709N_TTCACGCA_S105_L003.sorted.macs_peaks.narrowPeak -v > 2019053102_T3.venn
 bedtools intersect -a 2019053102_T4_20190709N_TGGTGGTA_S104_L003.sorted.macs_peaks.narrowPeak -b 2019053102_N_20190709N_TTCACGCA_S105_L003.sorted.macs_peaks.narrowPeak -v > 2019053102_T4.venn
 ```
+venn shown for sample specific MACS peaks
+```
+for i in `ls *venn`
+do
+awk '{print $1,$2,$3}' OFS="\t" $i > $i.bed
+done
+conda install -c bioconda intervene
+for i in 2019032901 2019032903 2019040901 2019051703 2019052301 2019053101 2019053102
+do
+mkdir $i
+intervene venn -i /gpfs/home/guosa/hpc/methylation/pancrease/medip/venn/$i*.bed  --output ./$i
+done
+```
