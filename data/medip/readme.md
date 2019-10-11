@@ -47,9 +47,12 @@ awk '{print $1,$2,$3}' OFS="\t" $i > $i.bed
 done
 conda install -c bioconda intervene
 
+cd ~/hpc/methylation/pancrease/medip
 for i in 2019032901 2019032903 2019040901 2019051703 2019052301 2019053101 2019053102
 do
 mkdir $i
-intervene venn -i /gpfs/home/guosa/hpc/methylation/pancrease/medip/venn/$i*.bed --project $i
+intervene venn -i /gpfs/home/guosa/hpc/methylation/pancrease/medip/venn/$i*.bed --project Intervene_results
+intervene upset -i /gpfs/home/guosa/hpc/methylation/pancrease/medip/venn/$i*.bed --project Intervene_results
+intervene pairwise  -i /gpfs/home/guosa/hpc/methylation/pancrease/medip/venn/$i*.bed --project Intervene_results
 done
 ```
