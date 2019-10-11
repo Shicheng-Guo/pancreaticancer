@@ -55,4 +55,6 @@ intervene venn -i /gpfs/home/guosa/hpc/methylation/pancrease/medip/venn/$i*.bed 
 intervene upset -i /gpfs/home/guosa/hpc/methylation/pancrease/medip/venn/$i*.bed --project Intervene_results
 intervene pairwise  -i /gpfs/home/guosa/hpc/methylation/pancrease/medip/venn/$i*.bed --project Intervene_results
 done
+intervene upset -i /gpfs/home/guosa/hpc/methylation/pancrease/medip/venn/*.bed --project Intervene_results
+intervene pairwise  -i /gpfs/home/guosa/hpc/methylation/pancrease/medip/venn/*.bed --project Intervene_results
 ```
