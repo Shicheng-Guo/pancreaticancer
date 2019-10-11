@@ -1,4 +1,4 @@
-# @CHG1
+# medip-seq analysis in @CHG1
 
 MACS2
 ```
