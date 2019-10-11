@@ -1,5 +1,8 @@
 # medip-seq analysis in @CHG1
 
+```
+cd ~/hpc/methylation/pancrease/medip
+```
 MACS2
 ```
 for i in `ls *sorted`
