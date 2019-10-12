@@ -83,10 +83,7 @@ do
 perl tab2matrix.pl $i > $i.matrix
 done
 ```
-matrix2heatmap
-```
 
-```
 
 
 
