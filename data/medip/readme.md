@@ -85,60 +85,8 @@ done
 ```
 matrix2heatmap
 ```
-# CHG1
-setwd("~/hpc/methylation/pancrease/medip")
-file=c("2019032901","2019032903","2019040901","2019051703","2019052301","2019053101","2019053102")
-for (i in file){
-print(i)
-input<-read.table(paste(i,".matrix",sep=""),head=T,row.names=1,check.names=F)
-colnames(input)<-unlist(lapply(strsplit(colnames(input),"_20190"),function(x) x[1]))
-foldc<-unlist(apply(input,1,function(x) mean(x[2:4]/x[1])))
-foldc<-na.omit(foldc)
-foldc<-foldc[-which(!is.finite(foldc))]
-xsel<-head(order(foldc,decreasing=T),n=2000)
-pdf(paste(i,".hvar.matrix.pdf",sep=""))
-temp<-input[match(names(foldc)[xsel],rownames(input)),]
-z<-apply(temp,1,function(x) (x-mean(x))/sd(x))
-HeatMap(data.matrix(t(z)))
-dev.off()
-}
-```
-
 
 ```
-HeatMap<-function(data){
 
-#  note: this function include correlation based heatmap (pearson or spearman)
-#  data: row is gene and column is sample
-#  colname and rowname cannot be NULL
-#  Usage example:
-#  test<- matrix(runif(100),nrow=20)
-#  colnames(test)=c("A","A","A","B","B")
-#  rownames(test)=paste("Gene",1:20,sep="")
-#  HeatMap(test)
-
-  library("gplots")
-  colors <- colorpanel(75,"midnightblue","mediumseagreen","yellow")
-  colors <-bluered(75)
-
-  sidecol<-function(x){
-    x<-as.numeric(as.factor(x))
-    col<-rainbow(length(table(colnames(data))))
-    sapply(x,function(x) col[x])
-  }
-
-  Hclust=function(x){hclust(x,method="complete")}
-  ColSideColors=sidecol(colnames(data))
-
-  heatmap.2(data,trace="none",
-            hclust=Hclust,
-            cexRow = 1, cexCol = 1,
-            ColSideColors=ColSideColors,
-            density.info="none",col=colors,
-            Colv=T,Rowv = TRUE,
-            keysize=0.9, margins = c(5, 10)
-            )
-}
-```
 
 
