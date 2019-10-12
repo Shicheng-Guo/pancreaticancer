@@ -1,3 +1,18 @@
+## loading packages
+#BiocManager::install("ChIPseeker")
+#BiocManager::install("seqplots")
+#BiocManager::install("genomation")
+#BiocManager::install("clusterProfiler")
+
+setwd("~/hpc/methylation/pancrease/medip")
+library("ChIPseeker")
+library("seqplots")
+library("genomation")
+library("clusterProfiler")
+library("ReactomePA")
+library(TxDb.Hsapiens.UCSC.hg19.knownGene)
+txdb <- TxDb.Hsapiens.UCSC.hg19.knownGene
+
 ## KEGG enrichment analysis to shared DMRs (promoter and overall)
 setwd("~/hpc/methylation/pancrease/medip/Intervene_results/sets")
 REF1<-"1111_2019032903_T1.venn_2019032903_T2.venn_2019032903_T3.venn_2019032903_T4.venn.bed.ref"
