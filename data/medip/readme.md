@@ -10,6 +10,17 @@ do
 macs2 callpeak -t $i -f BAM -g hs -n $i.macs -B -q 0.05  &
 done
 ```
+
+narrowPeaks2bigwig
+```
+for i in `ls *macs_peaks.narrowPeak`
+do 
+awk '{print $1,$2,$3,$5}' OFS="\t" $i | bedtools sort -i - > ./matrix/$i.sort.bdg
+bedGraphToBigWig ./matrix/$i.sort.bdg ~/hpc/db/hg19/hg19.chrom.sizes ./matrix/$i.bw 
+echo $i 
+done
+```
+
 bedtools to substract normal peaks from cancer genome.
 ```
 bedtools intersect -a 2019032901_T1_20190709N_CCAGTTCA_S73_L003.sorted.macs_peaks.narrowPeak -b 2019032901_N_20190709N_CCTCCTGA_S76_L003.sorted.macs_peaks.narrowPeak -v > 2019032901_T1.venn
