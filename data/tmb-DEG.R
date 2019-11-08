@@ -35,7 +35,17 @@ for(i in 1:nrow(DD)){
   print(i)
 }
 head(PP)
-out=data.frame(cufflinks[,1],PP)
+out=data.frame(as.character(cufflinks[,1]),PP,FDR=p.adjust(PP[,4],"fdr"))
+
 head(out)
-write.table(out,file="TMB-DEG.out.txt",sep="\t",quote = F,col.names = NA,row.names = T)
+write.table(out,file="TMB-DEG.out.txt",sep="\t",quote = F,col.names = T,row.names = F)
+
+
+library("qqman")
+library("Haplin")
+pdf("qqplot.pdf")
+pvalues=na.omit(out[,5])
+pQQ(pvalues, nlabs =length(pvalues), conf = 0.95)
+dev.off()
+
 
