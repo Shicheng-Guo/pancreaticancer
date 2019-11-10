@@ -96,8 +96,8 @@ done
 ```
 
 Here, we want to check the DMRs in Driver Mutation Genes ()
-* DMR located in driver gene regions (pan-cancer and PAAC)
-* DMR located in promoter of driver gene (pan-cancer and PAAC)
+* DMR located in driver gene regions (PANCAN and PAAD)
+* DMR located in promoter of driver gene (PANCAN and PAAD)
 ```
 wget https://raw.githubusercontent.com/Shicheng-Guo/PancreaticCancer/master/data/medip/DriverMutationGene2018.txt
 
