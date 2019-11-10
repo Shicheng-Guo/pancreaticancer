@@ -210,6 +210,10 @@ HeatMap(data.matrix(t(z)))
 dev.off()
 }
 
+###############################################################################################
+## heatmap for all the samples of each individual
+
+
 ```
 
 
