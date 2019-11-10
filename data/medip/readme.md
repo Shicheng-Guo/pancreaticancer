@@ -163,4 +163,30 @@ intervene venn -i $i*.bed --project $i.pancan.promoterEnhancaer
 done
 ```
 
+Gene Set heatmap 
+```
+cd ~/hpc/methylation/pancrease/medip
+
+grep PAAD DriverMutationGene2018.txt | awk '{print $1}' > paad.txt
+grep PANCAN DriverMutationGene2018.txt | awk '{print $1}' > pancan.txt
+grep -w -f paad.txt ~/hpc/db/hg19/refGeneV2.hg19.bed | awk '{print $1,$2,$3,$6,$7}' OFS="\t" | sort -u > paad.TumorDrivenMutationList.hg19.bed
+grep -w -f pancan.txt ~/hpc/db/hg19/refGeneV2.hg19.bed | awk '{print $1,$2,$3,$6,$7}' OFS="\t" | sort -u > pancan.TumorDrivenMutationList.hg19.bed
+
+for i in 2019032901 2019032903 2019040901 2019051703 2019052301 2019053101 2019053102
+do
+cat $i\_*.venn > $i.temp.bed
+bedtools sort -i $i.temp.bed > $i.sort.bed
+bedtools merge -d 500 -i $i.sort.bed > $i.merge.bed
+rm $i.temp.bed
+rm $i.sort.bed
+awk '{print $1,$2,$3,$1":"$2"-"$3}' OFS="\t" $i.merge.bed > $i.merge.sort.bed
+for j in `ls $i\_*.bw`
+do
+bigWigAverageOverBed $j $i.merge.sort.bed $j.tab 
+done 
+done
+
+
+```
+
 
