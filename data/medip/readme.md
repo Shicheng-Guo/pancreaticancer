@@ -186,6 +186,29 @@ bigWigAverageOverBed $j $i.merge.sort.bed $j.tab
 done 
 done
 
+###############################################################################################
+## heatmap for all the samples of each individual
+
+cd ~/hpc/methylation/pancrease/medip/heatmap/pancan
+wget https://raw.githubusercontent.com/Shicheng-Guo/PancreaticCancer/master/data/medip/HeatMap.R -O HeatMap.R 
+source("./HeatMap.R")
+file=c("2019032901","2019032903","2019040901","2019051703","2019052301","2019053101","2019053102")
+for (i in file){
+print(i)
+input<-read.table(paste(i,".matrix",sep=""),head=T,row.names=1,check.names=F)
+colnames(input)<-unlist(lapply(strsplit(colnames(input),"_"),function(x) x[2]))
+foldc<-unlist(apply(input,1,function(x) mean(x[2:4]/x[1])))
+foldc<-na.omit(foldc)
+if(sum(!is.finite(foldc))>0){
+foldc<-foldc[-which(!is.finite(foldc))]
+}
+xsel<-head(order(foldc,decreasing=T),n=2000)
+pdf(paste(i,".panca.fullgene.matrix.pdf",sep=""))
+temp<-input[match(names(foldc)[xsel],rownames(input)),]
+z<-apply(temp,1,function(x) (x-mean(x))/sd(x))
+HeatMap(data.matrix(t(z)))
+dev.off()
+}
 
 ```
 
