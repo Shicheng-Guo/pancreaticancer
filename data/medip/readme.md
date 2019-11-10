@@ -212,6 +212,21 @@ dev.off()
 
 ###############################################################################################
 ## heatmap for all the samples of each individual
+matrix<-list.files(pattern="*.matrix$")
+data<-read.table(matrix[1],head=T,row.names=1,check.names=F)
+colnames(data)<-unlist(lapply(strsplit(colnames(data),"_201"),function(x) x[1]))
+for(i in 2:length(matrix)){
+print(i)
+temp<-read.table(matrix[i],head=T,row.names=1,check.names=F)
+colnames(temp)<-unlist(lapply(strsplit(colnames(temp),"_201"),function(x) x[1]))
+data<-data.frame(data,temp,check.names=F)
+}
+head(data)
+
+pdf("heatmap.panca.pdf")
+data<-data.matrix(data.frame(data))
+heatmap(cor(data),Rowv=F,Colv=F)
+dev.off()
 
 
 ```
