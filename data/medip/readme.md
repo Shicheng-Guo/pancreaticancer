@@ -4,6 +4,8 @@
 * macs2 installation in hpc: `conda install -c bioconda macs2`
 * download SRR data with [pbs script](https://raw.githubusercontent.com/Shicheng-Guo/Gscutility/master/sradownloadMCRI.pbs.pl)
 * [consensuspeak](./consensuspeak): identify regions supported by the given number of replicates and then merge that close to each other
+* pathview
+
 ```
 cd ~/hpc/methylation/pancrease/medip
 ```
