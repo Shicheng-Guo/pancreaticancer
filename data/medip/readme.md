@@ -4,6 +4,7 @@
 * macs2 installation in hpc: `conda install -c bioconda macs2`
 * download SRR data with [pbs script](https://raw.githubusercontent.com/Shicheng-Guo/Gscutility/master/sradownloadMCRI.pbs.pl)
 * [consensuspeak](./consensuspeak): identify regions supported by the given number of replicates and then merge that close to each other
+* rename sorted SRR bam to origin filenames with [rename.pl](reanme.pl) (2019053102_N.bam, 2019053102_T1.bam, 2019053102_T2.bam, 2019053102_T3.bam)
 * pathview
 
 ```
