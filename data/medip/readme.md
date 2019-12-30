@@ -5,7 +5,7 @@
 * Aim3: expression pattern
 
 Timeline: 
-* macs2 callpeak to identify hypermethylation peaks with `macs2 callpeak -t  PAAD.T.sort.bam -f BAM -g hs -n  PAAD_T -B -q 0.01`
+* macs2 callpeak to identify hyper-5me peaks with `macs2 callpeak -t  PAAD.T.sort.bam -f BAM -g hs -n  PAAD_T -B -q 0.01`
 * sort merged bam file with `samtools sort PAAD.T.bam -o PAAD.T.sort.bam -@12`, received 13G PAAD.N.sort.bam  
 * merge all T and N bam files with `samtools merge PAAD.T.bam *_T*.bam ` and `samtools merge PAAD.N.bam *_N*.bam`
 * MBD-Seq data for [33 samples (7 individuals)](../sample.csv) of pancreatic cancer were downloaded from [SRP222713](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP222713&o=acc_s%3Aa&s=SRR10150657,SRR10150659,SRR10150661,SRR10150662,SRR10150663,SRR10150664,SRR10150665,SRR10150666,SRR10150667,SRR10150668,SRR10150669,SRR10150670,SRR10150671,SRR10150672,SRR10150673,SRR10150674,SRR10150675,SRR10150676,SRR10150677,SRR10150678,SRR10150679,SRR10150680,SRR10150681,SRR10150683,SRR10150684,SRR10150685,SRR10150686,SRR10150687,SRR10150688,SRR10150689,SRR10150660,SRR10150658,SRR10150682)
