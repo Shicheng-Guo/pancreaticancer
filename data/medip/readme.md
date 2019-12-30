@@ -1,8 +1,8 @@
 # medip-seq analysis in @CHG1
 
-* aim1: mutation pattern 
-* aim2: methylation pattern
-* aim3: expression pattern
+* Aim1: mutation pattern 
+* Aim2: methylation pattern
+* Aim3: expression pattern
 
 Timeline: 
 
