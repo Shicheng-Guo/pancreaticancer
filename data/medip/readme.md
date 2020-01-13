@@ -5,7 +5,9 @@
 * Aim3: expression pattern
 
 Timeline: 
- * use `bdgcmp` to make bedgraph with `perl bedGraph2wig.pl --bedgraph PAAD.N.FE.bdg --wig PAAD.N.wig --step 50` 
+
+* 2020/01/12: How about methylation level for driver mutation genes, for example: ARID1A，CDKN2A，EEF2，GNAS，KDM6A，KRAS
+* use `bdgcmp` to make bedgraph with `perl bedGraph2wig.pl --bedgraph PAAD.N.FE.bdg --wig PAAD.N.wig --step 50` 
 * [macs2 callpeak](https://github.com/taoliu/MACS/wiki/Advanced%3A-Call-peaks-using-MACS2-subcommands) to find hyper-5me peaks `macs2 callpeak -t  PAAD.T.sort.bam -f BAM -g hs -n  PAAD_T -B -q 0.01`
 * sort merged bam file with `samtools sort PAAD.T.bam -o PAAD.T.sort.bam -@12`, received 13G PAAD.N.sort.bam  
 * merge all T and N bam files with `samtools merge PAAD.T.bam *_T*.bam ` and `samtools merge PAAD.N.bam *_N*.bam`
