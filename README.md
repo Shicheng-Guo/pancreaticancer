@@ -2,7 +2,7 @@
 
 
 ```
-~/hpc/methylation/pancrease/medip/bam
+cd ~/hpc/methylation/pancrease/medip/bam
 ```
 
 Timeline: 
